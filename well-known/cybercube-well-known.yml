@@ -1,0 +1,74 @@
+generated: '2026-08-11'
+method: probed
+source: live probes of every CyberCube host discovered in STEP 0b
+summary:
+  hosts_probed: 3
+  paths_probed: 15
+  real_documents_found: 0
+  note: 'No /.well-known/ document is served on any CyberCube host. No WellKnown or
+    SecurityTxt pointer is emitted in apis.yml — this file records a verified absence,
+    not a presence. The 200s on docs.atlas.cybcube.com are the single-page-app catch-all:
+    every path returns the identical 2,259-byte HTML shell, so they are misses, not
+    documents.'
+hosts:
+- host: https://www.cybcube.com
+  role: marketing site (HubSpot CMS)
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+- host: https://api.cybcube.com
+  role: production API host (AWS API Gateway custom domain)
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+    body: '{"message":"Missing Authentication Token"}'
+  - path: /.well-known/openid-configuration
+    status: 403
+  - path: /.well-known/oauth-authorization-server
+    status: 403
+  - path: /.well-known/api-catalog
+    status: 403
+  - path: /.well-known/ai-plugin.json
+    status: 403
+- host: https://docs.atlas.cybcube.com
+  role: Atlas documentation portal (React SPA, login-gated)
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    content_type: text/html
+    bytes: 2259
+    verdict: miss
+    note: SPA catch-all shell, not a document
+  - path: /.well-known/openid-configuration
+    status: 200
+    content_type: text/html
+    bytes: 2259
+    verdict: miss
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    content_type: text/html
+    bytes: 2259
+    verdict: miss
+  - path: /.well-known/api-catalog
+    status: 200
+    content_type: text/html
+    bytes: 2259
+    verdict: miss
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    content_type: text/html
+    bytes: 2259
+    verdict: miss
+x-evidence:
+  checked: '2026-08-11'
+  control_path_diff: 'Every path on docs.atlas.cybcube.com — including /openapi.json,
+    /swagger.json and /llms.txt — returns byte-identical 2,259-byte HTML. A 200 from
+    this host carries no information.'

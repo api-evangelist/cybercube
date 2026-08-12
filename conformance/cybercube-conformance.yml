@@ -1,0 +1,69 @@
+generated: '2026-08-11'
+method: searched
+source: https://www.cybcube.com/
+note: 'CyberCube publishes no machine-readable contract on any public host, so no standard
+  can be asserted from a specification. Every entry below is either a claim CyberCube
+  itself published on its own domain, or a verified negative from a live probe. Nothing
+  here is inferred from the domain or the sector.'
+standards:
+- id: soc2-type-ii
+  conforms: true
+  evidence: 'CyberCube announced completion of its SOC 2 Type II audit report on its
+    own newsroom, 2020-07-27: "CyberCube, a market-leading cyber analytics provider,
+    has completed its Service Organization Control 2 Type II (SOC 2 Type II) audit
+    report."'
+  source: https://www.cybcube.com/news/2020/07/cybercube-completes-soc-2-type-ii-certification-demonstrating-level-of-customer-data-security
+  caveat: 'Provider-published claim from 2020. CyberCube serves no trust center, no
+    /security page and no /compliance page (all 404), so there is no current attestation
+    surface a customer or agent can check. The report itself is not public.'
+- id: iso-27001
+  conforms: false
+  evidence: No ISO 27001 claim found anywhere on cybcube.com.
+- id: openapi
+  conforms: gated
+  evidence: 'CyberCube almost certainly maintains OpenAPI, but does not publish it.
+    The Atlas documentation portal bundle (https://docs.atlas.cybcube.com/assets/index-C8sg2zxh.js,
+    2.58 MB) ships swagger-ui, swagger-client and apidom with OpenApi3 and JSONSchema
+    fixed-field visitors compiled in — that is a SwaggerUI reference renderer, and
+    it has nothing to render unless OpenAPI documents are being fetched from the authenticated
+    docs API (apiPrefix https://api.docs.atlas.cybcube.com). Those documents are never
+    exposed anonymously.'
+  probed: 'Probed /openapi.json, /openapi.yaml, /swagger.json, /v1/openapi.json, /v3/api-docs,
+    /api-docs, /docs and /redoc against api.cybcube.com, api.docs.atlas.cybcube.com,
+    api.xm.atlas.cybcube.com, api.login.atlas.cybcube.com, login.atlas.cybcube.com,
+    platform.cybcube.com and docs.atlas.cybcube.com — every result was either 403 (AWS
+    API Gateway auth challenge) or a byte-identical SPA HTML shell.'
+  provider_action: 'This is a one-line fix on CyberCube''s side: publish the CyberConnect
+    OpenAPI at a stable public URL, or expose the SwaggerUI reference without a session.
+    The specification already exists; only its distribution is gated.'
+- id: asyncapi
+  conforms: false
+  evidence: No AsyncAPI document and no publicly documented webhook or event surface.
+- id: graphql
+  conforms: false
+  evidence: 'No public /graphql surface. The only GraphQL endpoint referenced by CyberCube
+    front-end configuration is a third-party AWS AppSync telemetry endpoint, not a
+    customer-facing API.'
+- id: oauth2
+  conforms: unknown
+  evidence: 'A login application is served at login.cybcube.com and the Atlas SPA bootstraps
+    a login-session iframe, but no /.well-known/openid-configuration or /.well-known/oauth-authorization-server
+    is served on any host, so the authorization model cannot be confirmed anonymously.'
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on www.cybcube.com and 403 on api.cybcube.com.
+- id: rfc9457-problem-details
+  conforms: unknown
+  evidence: No public specification or error reference to read.
+x-evidence:
+  checked: '2026-08-11'
+  hosts_probed:
+  - www.cybcube.com
+  - api.cybcube.com
+  - docs.atlas.cybcube.com
+  - login.cybcube.com
+  - login.atlas.cybcube.com
+  - platform.cybcube.com
+  - api.docs.atlas.cybcube.com
+  - api.xm.atlas.cybcube.com
+  - api.login.atlas.cybcube.com

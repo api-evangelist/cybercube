@@ -1,0 +1,26 @@
+generated: '2026-08-11'
+method: searched
+source: https://www.cybcube.com/
+plan_count: 0
+model: enterprise-contact-sales
+note: 'CyberCube publishes no pricing page and no plans. There is no /pricing, /plans
+  or /plan URL in the 447-entry sitemap at https://www.cybcube.com/sitemap.xml, and
+  no price, tier, quota or overage is stated anywhere on the public site. Every commercial
+  path routes to a sales conversation: https://www.cybcube.com/request-a-demo and https://www.cybcube.com/contact/.
+  This is an honest zero, not an unchecked field — CyberCube sells enterprise licences
+  to insurers, reinsurers and brokers, and prices them privately.'
+plans: []
+signup:
+  self_serve: false
+  demo_request: https://www.cybcube.com/request-a-demo
+  contact: https://www.cybcube.com/contact/
+x-evidence:
+  checked: '2026-08-11'
+  probes:
+  - url: https://www.cybcube.com/sitemap.xml
+    status: 200
+    detail: 447 locs, no pricing/plans page
+  - url: https://www.cybcube.com/request-a-demo
+    status: 200
+  - url: https://www.cybcube.com/contact/
+    status: 200

@@ -1,0 +1,31 @@
+generated: '2026-08-11'
+method: searched
+source: https://www.cybcube.com/cyberconnect
+limit_count: 0
+note: 'No rate limits are published on any public CyberCube surface. The CyberConnect
+  product page describes API capability areas but states no quota, window, burst or
+  throttling behaviour, and the API reference that would carry them is inside the login-gated
+  Atlas documentation portal. No runtime signal could be observed either: api.cybcube.com
+  rejects anonymous requests at the AWS API Gateway edge with 403 MissingAuthenticationTokenException
+  before any RateLimit-* or Retry-After header is emitted. This is an honest zero —
+  the limits may well exist, but no unauthenticated consumer or agent can discover
+  them.'
+limits: []
+response_headers:
+  observed: []
+  note: 'None observed. The 403 from api.cybcube.com carries only x-amzn-requestid,
+    x-amzn-errortype and x-amz-apigw-id — no rate-limit headers.'
+exhaustion_status_code: null
+x-evidence:
+  checked: '2026-08-11'
+  probes:
+  - url: https://api.cybcube.com/
+    status: 403
+    detail: MissingAuthenticationTokenException; no RateLimit-*, X-RateLimit-* or Retry-After
+      headers present
+  - url: https://www.cybcube.com/cyberconnect
+    status: 200
+    detail: product page; no limits documented
+  - url: https://docs.atlas.cybcube.com/
+    status: 200
+    detail: login-gated SPA; API reference not publicly readable
