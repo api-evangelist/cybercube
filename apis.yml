@@ -30,6 +30,17 @@ tags:
 - Reinsurance
 - Catastrophe Modeling
 - Underwriting
+- Insurtech
+tags_raw:
+- Company
+- Cyber Risk
+- Insurance
+- Analytics
+- Risk Modeling
+- Cybersecurity
+- Reinsurance
+- Catastrophe Modeling
+- Underwriting
 - InsurTech
 apis:
 - aid: cybercube:cyberconnect
