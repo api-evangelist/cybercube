@@ -13,6 +13,17 @@ description: 'CyberCube is a cyber risk analytics provider for the insurance ind
   reference and the Atlas documentation portal sit behind a customer login, and the
   production API host answers unauthenticated requests with an AWS API Gateway authentication
   challenge.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://www.cybcube.com/hubfs/cybercube-logo-white.svg
 url: https://raw.githubusercontent.com/api-evangelist/cybercube/refs/heads/main/apis.yml
 x-type: company
