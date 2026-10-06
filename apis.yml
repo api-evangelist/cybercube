@@ -44,7 +44,7 @@ x-type: company
 x-source: harvest:secondary-market
 specificationVersion: '0.23'
 created: '2026-08-11'
-modified: '2026-08-11'
+modified: '2026-10-06'
 tags:
 - Company
 - Cyber Risk
@@ -99,6 +99,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- url: https://www.cybcube.com/news/rss.xml
+  type: BlogRSS
 - type: Website
   url: https://www.cybcube.com/
 - type: Login
